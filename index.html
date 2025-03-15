@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        button { padding: 10px 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Telegram Mini App</h1>
+    <p>Foydalanuvchi: <span id="user"></span></p>
+    <button onclick="sendMessage()">Xabar Yuborish</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Full screen mode
+
+        document.getElementById("user").textContent = tg.initDataUnsafe.user?.first_name || "Noma'lum";
+
+        function sendMessage() {
+            tg.sendData("Hello from Mini App!"); // Botga ma'lumot yuborish
+        }
+    </script>
+</body>
+</html>
